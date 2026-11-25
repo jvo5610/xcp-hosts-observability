@@ -5,6 +5,13 @@ This repository documents the current observability setup for the XCP-ng hosts
 
 ## Current State
 
+Fett's local Solo path was repaired on 2026-11-25. Its collector now sends
+`otlphttp/local` to the retained private gateway `100.111.88.68:30418`, with the
+current SSM credential supplied through a root-only systemd environment file.
+The host exporter stays on loopback. The legacy Grafana Cloud exporter below
+was preserved unchanged and is a separate, unverified path. Yoda was not changed.
+See the scoped deployment/rollback procedures in `runbooks/operations.md`.
+
 Both XCP-ng hosts run:
 
 - `xen-exporter` as a local XAPI/OpenMetrics exporter on `127.0.0.1:9111`.
